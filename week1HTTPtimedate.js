@@ -21,3 +21,5 @@ module.exports = async function (context, req) {
         body: responseMessage
     };
 }
+
+/*curl -X POST "https://timedatehttp.azurewebsites.net/api/httptriggerno1" --data '{"name":"emily"}'-->*/
