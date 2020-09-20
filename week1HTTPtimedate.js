@@ -5,7 +5,7 @@ module.exports = async function (context, req) {
         var dateandtime = (currentTime.getMonth()+1) + "/" 
         + currentTime.getDate() + "/" 
         + currentTime.getFullYear() + " @ " 
-        + currentTime.getHours() + ":" 
+        + (currentTime.getHours()+20) + ":" 
         + currentTime.getMinutes() + ":"
         + currentTime.getSeconds();
         return dateandtime;
@@ -13,7 +13,7 @@ module.exports = async function (context, req) {
  
     const name = (req.query.name || (req.body && req.body.name));
     const responseMessage = name
-        ? "Hello, " + name + "! The current date is: " + printTime() + "."
+        ? "Hello, " + name + "! The current date is: " + printTime() + ". Your flag is: cUrl1ng_is_c00l"
         : "Hello! This is an HTTP Trigger Function. Please pass a name in the query string (?name=[your name]) or in the request body for a personalized response and the date and time!";
 
     context.res = {
@@ -22,4 +22,4 @@ module.exports = async function (context, req) {
     };
 }
 
-/*curl -X POST "https://timedatehttp.azurewebsites.net/api/httptriggerno1" --data '{"name":"emily"}'-->*/
+/*curl -X POST "https://cybercatamounts.azurewebsites.net/api/timedate" --data '{"name":"emily"}'-->*/
