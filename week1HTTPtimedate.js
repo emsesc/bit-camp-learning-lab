@@ -1,14 +1,34 @@
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
     function printTime() {
-        var currentTime = new Date();
-        var dateandtime = (currentTime.getMonth()+1) + "/" 
-        + currentTime.getDate() + "/" 
-        + currentTime.getFullYear() + " @ " 
-        + (currentTime.getHours()+20) + ":" 
-        + currentTime.getMinutes() + ":"
-        + currentTime.getSeconds();
-        return dateandtime;
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+        hour = updateTime(hour+20);
+        min = updateTime(min);
+        sec = updateTime(sec);
+        if (hour < 12) {
+            tday = "AM";
+        }
+        else {
+            tday = "PM"
+            if (hour != 12) {
+            hour -= 12
+            }
+        }
+
+        var clock = hour + " : " + min + " : " + sec + " " + tday
+
+        function updateTime(time) {
+        if (time < 10) {
+            return "0" + time;
+        }
+        else {
+            return time;
+        }
+        }
+        return clock;
     }
  
     const name = (req.query.name || (req.body && req.body.name));
