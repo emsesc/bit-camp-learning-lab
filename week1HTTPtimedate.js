@@ -14,7 +14,7 @@ module.exports = async function (context, req) {
     const name = (req.query.name || (req.body && req.body.name));
     const responseMessage = name
         ? "Hello, " + name + "! The current date is: " + printTime() + "."
-        : "Hello! This is an HTTP Trigger Fucntion. Please pass a name in the query string (?name=[your name]) or in the request body for a personalized response and the date and time!";
+        : "Hello! This is an HTTP Trigger Function. Please pass a name in the query string (?name=[your name]) or in the request body for a personalized response and the date and time!";
 
     context.res = {
         // status: 200, /* Defaults to 200 */
