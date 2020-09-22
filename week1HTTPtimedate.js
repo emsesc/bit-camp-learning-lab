@@ -5,7 +5,7 @@ module.exports = async function (context, req) {
         var hour = date.getHours();
         var min = date.getMinutes();
         var sec = date.getSeconds();
-        hour = updateTime(hour-4);
+        hour = updateTime(hour);
         min = updateTime(min);
         sec = updateTime(sec);
         if (hour < 12) {
