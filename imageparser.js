@@ -27,6 +27,7 @@ module.exports = async function (context, req) {
 async function analyzeImage(img){
     const subscriptionKey = process.env['subscriptionkey'];
     const uriBase = process.env['endpoint'] + '/face/v1.0/detect';
+	// env variables (similar to .gitignore/.env file) to not expose personal info
 
     let params = new URLSearchParams({
 	'returnFaceId': 'true',
