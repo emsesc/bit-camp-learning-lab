@@ -1,7 +1,8 @@
 function loadFile(event){
-    var image = document.getElementByID(output);
+    console.log("Got picture!")
+    var image = document.getElementById("output");
     // Get image from output 
-    image.src = image.createObjectURL(event.target.files[0])
+    image.src = URL.createObjectURL(event.target.files[0])
     // load inputted image into the image src and display
 }
 
@@ -12,17 +13,19 @@ function handle(event) {
     event.preventDefault();
     // stop the page from reloading
 
-    var myform = document.getElementById("image-form");
-        var payload = new FormData(myform);
+    (async() => {
+      var myform = document.getElementById("image-form");
+          var payload = new FormData(myform);
 
-        const resp = await fetch("https://spotifyfaceapp.azurewebsites.net/api/imageparser?code=HPEACydXT9FLjCQwejBqYYerVU5rJCjUayUz4i8tK6s9ahY55XnCKw==", {
-            method: 'POST',
-            body: payload
-        });
-    
-    let data = await resp.json();
-    var emotion = data.result[0].faceAttributes.emotion;
-    //sets emotion to the first result of the request
+          const resp = await fetch("https://spotifyfaceapp.azurewebsites.net/api/imageparser?code=HPEACydXT9FLjCQwejBqYYerVU5rJCjUayUz4i8tK6s9ahY55XnCKw==", {
+              method: 'POST',
+              body: payload
+          });
+
+        let data = await resp.json();
+        var emotion = data.result[0].faceAttributes.emotion;
+        //sets emotion to the first result of the request
+    })();
 
     var resultString = `
     <h3> Emotions in your image: </h3><br />
