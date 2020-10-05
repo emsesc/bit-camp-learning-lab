@@ -43,7 +43,7 @@ async function analyzeImage(img){
         // we want to send the image
         headers: {
             'Content-Type' : 'application/octet-stream',
-            'Ocp-Apim-Subscription-Key' : '13961bda2d9b41a6857bc2f75fb3fcd6'
+            'Ocp-Apim-Subscription-Key' : process.env['subscriptionkey']
         }
     })
 
