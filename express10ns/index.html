@@ -87,10 +87,10 @@
                           <div class="container" id="container"></div>
                               <div class="c-well h-text-center">
                                 <div id="hidden-emotion" hidden></div>
-                                <form id="image-form" onsubmit="return handle(event)" enctype="multipart/form-data"></form>
+                                <form id="image-form" onsubmit="handle(event)" enctype="multipart/form-data">
                                     <input class="label" type="file" onChange="loadFile(event)" accept="image/x-png,image/jpeg" name="image"></input>
                                     <img id="output" class="img-fluid" src="img/placeholder.png"></img>
-                                    <input class="btn custom-btn custom-btn-bg custom-btn-link" type="submit" value="Submit Your Picture 📷"></input>
+                                    <input class="btn custom-btn custom-btn-bg" type="submit" value="Submit Your Picture 📷"></input>
                                 </form>
                               </div>
                         </body>
