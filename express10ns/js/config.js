@@ -9,8 +9,8 @@ function loadFile(event){
 // main function for interacting with face api
 async function handle(event) {
     console.log("Loading picture");
-    document.getElementById("output").src = "img/loading.gif";
-    //$ did not work?
+    // document.getElementById("output").src = "img/loading.gif";
+    $('emotion').html("loading...");
     // target the output element ID and change content
     event.preventDefault();
     // stop the page from reloading
@@ -22,24 +22,26 @@ async function handle(event) {
         console.log("Posting data...");
         const resp = await fetch("https://spotifyfaceapp.azurewebsites.net/api/imageparser?code=HPEACydXT9FLjCQwejBqYYerVU5rJCjUayUz4i8tK6s9ahY55XnCKw==", {
             method: 'POST',
-            body: payload
+            body: payload,
         });
 
-        let data = await resp.json();
+        var data = await resp.json();
+        console.log(data);
         var emotion = data.result[0].faceAttributes.emotion;
         //sets emotion to the first result of the request
+
         console.log(emotion);
         console.log(payload);
         var resultString = `
         <h3> Emotions in your image: </h3><br />
-        <p> Anger: $(emotion.anger)</p>
-        <p> Happiness: $(emotion.happiness)</p>
-        <p> Surprise: $(emotion.surprise)</p>
-        <p> Contempt: $(emotion.contempt)</p>
-        <p> Disgust: $(emotion.disgust)</p>
-        <p> Fear: $(emotion.fear)</p>
-        <p> Sadness: $(emotion.sadness)</p>
-        <p> Neutral: $(emotion.neutral)</p>
+        <p> Anger: ${emotion.anger}</p>
+        <p> Happiness: ${emotion.happiness}</p>
+        <p> Surprise: ${emotion.surprise}</p>
+        <p> Contempt: ${emotion.contempt}</p>
+        <p> Disgust: ${emotion.disgust}</p>
+        <p> Fear: ${emotion.fear}</p>
+        <p> Sadness: ${emotion.sadness}</p>
+        <p> Neutral: ${emotion.neutral}</p>
         `;
 
         var valence = emotion.happiness + emotion.surprise - emotion.anger - emotion.contempt - emotion.disgust - emotion.fear - emotion.sadness;
