@@ -9,25 +9,33 @@ function loadFile(event){
 // main function for interacting with face api
 async function handle(event) {
     console.log("Loading picture");
-    // document.getElementById("output").src = "img/loading.gif";
-    $('emotion').html("loading...");
+    document.getElementById("output").src = "img/loading.gif";
+    $('#emotion').html("loading...");
     // target the output element ID and change content
     event.preventDefault();
     // stop the page from reloading
 
     var myform = document.getElementById("image-form");
         var payload = new FormData(myform);
-        console.log(payload);
-        console.log(myform);
-        console.log("Posting data...");
+
+        console.log(`What we're sending.. ${payload}`);
+        console.log("Posting your image...");
         const resp = await fetch("https://spotifyfaceapp.azurewebsites.net/api/imageparser?code=HPEACydXT9FLjCQwejBqYYerVU5rJCjUayUz4i8tK6s9ahY55XnCKw==", {
             method: 'POST',
-            body: payload,
+            body: payload
         });
 
         var data = await resp.json();
-        console.log(data);
-        var emotion = data.result[0].faceAttributes.emotion;
+        console.log(`Your results.. ${payload}`);
+
+        try {
+          var emotion = data.result[0].faceAttributes.emotion;
+        }
+        catch(err) {
+          alert("Please submit a picture with a real face! Try again.");
+          window.location.reload();
+        }
+
         //sets emotion to the first result of the request
 
         console.log(emotion);
