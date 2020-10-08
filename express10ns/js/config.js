@@ -10,7 +10,7 @@ function loadFile(event){
 async function handle(event) {
     console.log("Loading picture");
     document.getElementById("output").src = "img/loading.gif";
-    $('#emotion').html("loading...");
+    $('#emotion').html("Loading...");
     // target the output element ID and change content
     event.preventDefault();
     // stop the page from reloading
@@ -42,14 +42,14 @@ async function handle(event) {
         console.log(payload);
         var resultString = `
         <h3> Emotions in your image: </h3><br />
-        <p> Anger: ${emotion.anger}</p>
-        <p> Happiness: ${emotion.happiness}</p>
-        <p> Surprise: ${emotion.surprise}</p>
-        <p> Contempt: ${emotion.contempt}</p>
-        <p> Disgust: ${emotion.disgust}</p>
-        <p> Fear: ${emotion.fear}</p>
-        <p> Sadness: ${emotion.sadness}</p>
-        <p> Neutral: ${emotion.neutral}</p>
+        <p> 😠 Anger: ${emotion.anger}</p>
+        <p> ️😄 Happiness: ${emotion.happiness}</p>
+        <p> 😮 Surprise: ${emotion.surprise}</p>
+        <p> 😒 Contempt: ${emotion.contempt}</p>
+        <p> 🤢 Disgust: ${emotion.disgust}</p>
+        <p> 😱 Fear: ${emotion.fear}</p>
+        <p> 😥 Sadness: ${emotion.sadness}</p>
+        <p> 😐 Neutral: ${emotion.neutral}</p>
         `;
 
         var valence = emotion.happiness + emotion.surprise - emotion.anger - emotion.contempt - emotion.disgust - emotion.fear - emotion.sadness;
